@@ -1,7 +1,7 @@
 package com.order_service.controller;
 
 import com.order_service.dto.OrderEvent;
-import com.order_service.kafka.OrderProducer;
+import com.order_service.kafka.NotificationProducer;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OrderController {
 
-    private final OrderProducer orderProducer;
+    private final NotificationProducer notificationProducer;
 
-    public OrderController(OrderProducer orderProducer) {
-        this.orderProducer = orderProducer;
+    public OrderController(NotificationProducer notificationProducer) {
+        this.notificationProducer = notificationProducer;
     }
 
     @PostMapping("/orders")
     public String createOrder(@RequestBody OrderEvent orderEvent) {
 
-        orderProducer.sendOrderEvent(orderEvent);
+        notificationProducer.sendOrderEvent(orderEvent);
 
         return "Order Event Published Successfully";
     }

@@ -7,14 +7,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class OrderEvent {
-
-    private Long orderId;
-    private String email;
-    private String mobile;
-    private String whatsapp;
-    private String status;
+@AllArgsConstructor
+public class WhatsappRequestDto {
+    private String to;
+    private String message;
 
 }

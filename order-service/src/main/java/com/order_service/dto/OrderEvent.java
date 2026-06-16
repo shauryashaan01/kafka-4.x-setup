@@ -13,6 +13,7 @@ public class OrderEvent {
 
     private Long orderId;
     private String email;
+    private String mobile;
+    private String whatsapp;
     private String status;
-
 }
